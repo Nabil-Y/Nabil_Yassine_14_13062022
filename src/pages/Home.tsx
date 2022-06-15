@@ -1,5 +1,19 @@
+import { getFromLocalStorage } from "../utils/helperFunctions";
+
+/**
+ * Home function
+ * @returns Home page component
+ */
 const Home = () => {
-  return <div>Home</div>;
+  const test = getFromLocalStorage("employess");
+  console.log(test);
+
+  return (
+    <>
+      <div>Home</div>
+      <p>{test}</p>
+    </>
+  );
 };
 
 export default Home;

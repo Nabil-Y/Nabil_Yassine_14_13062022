@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+/**
+ * useLocalStorage Custom Hook:
+ * Allows usage of local storage with value and setter function like useState
+ * @param key Key to set in local storage
+ * @param initialValue Initial value of key
+ * @returns [ local storage value, setter function ]
+ */
 const useLocalStorage = (key: string, initialValue: string) => {
   const [storedValue, setStoredValue] = useState<string>(() => {
     try {
