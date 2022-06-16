@@ -12,7 +12,12 @@ declare global {
     city: string;
     state: string;
     zipcode: string | number;
-    department: string;
+    department:
+      | "Sales"
+      | "Marketing"
+      | "Engineering"
+      | "Human Resources"
+      | "Legal";
   }
 
   interface EmployeesList {
