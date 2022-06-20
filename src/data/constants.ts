@@ -1,3 +1,5 @@
+import { Employee } from "../types/types";
+
 export const DEPARTMENTS = [
   "Sales",
   "Marketing",

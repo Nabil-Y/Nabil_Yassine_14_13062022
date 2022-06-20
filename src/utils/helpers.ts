@@ -1,4 +1,5 @@
 import { EMPLOYEES } from "../data/constants";
+import { EmployeesList } from "../types/types";
 
 // Redux is the main state management tool
 // Local storage is only used as a backup tool
