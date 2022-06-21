@@ -1,3 +1,6 @@
+/**
+ * Employee interface to store data for one employee
+ */
 export interface Employee {
   firstName: string;
   lastName: string;
@@ -15,6 +18,9 @@ export interface Employee {
     | "Legal";
 }
 
+/**
+ * EmployeesList interface to store data for all employees
+ */
 export interface EmployeesList {
   employees: Employee[];
 }

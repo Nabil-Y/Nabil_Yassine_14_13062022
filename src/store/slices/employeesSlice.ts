@@ -3,6 +3,7 @@ import {
   getEmployeesFromStorage,
   saveEmployeesToStorage,
 } from "../../utils/helpers";
+import { EmployeesList, Employee } from "../../types/types";
 
 // Redux is the main state management tool
 // Local storage is only used as a backup tool

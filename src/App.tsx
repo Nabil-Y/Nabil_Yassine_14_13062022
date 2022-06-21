@@ -3,6 +3,10 @@ import Employees from "./pages/Employees";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
 
+/**
+ * App function
+ * @returns App component
+ */
 const App = () => {
   return (
     <>

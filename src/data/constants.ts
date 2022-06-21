@@ -1,5 +1,8 @@
 import { Employee } from "../types/types";
 
+/**
+ * Departments names for "Department" input in AddEmployee form
+ */
 export const DEPARTMENTS = [
   "Sales",
   "Marketing",
@@ -8,6 +11,9 @@ export const DEPARTMENTS = [
   "Legal",
 ];
 
+/**
+ * States names for "State" input in AddEmployee form
+ */
 export const STATES = [
   {
     name: "Alabama",
@@ -247,6 +253,10 @@ export const STATES = [
   },
 ];
 
+/**
+ * Mock EmployeesList to load when no there is no data.
+ * Only for dev/test purposes
+ */
 export const EMPLOYEES: Employee[] = [
   {
     firstName: "Ronald",

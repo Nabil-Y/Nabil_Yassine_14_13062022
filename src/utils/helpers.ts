@@ -10,16 +10,16 @@ import { EmployeesList } from "../types/types";
  * @returns Employees list from local storage
  */
 export const getEmployeesFromStorage = (): EmployeesList => {
-  const baseList = { employees: EMPLOYEES };
+  const mockEmployeesList = { employees: EMPLOYEES };
   try {
     const employeesList = localStorage.getItem("employees");
     if (employeesList === null) {
-      return baseList;
+      return mockEmployeesList;
     }
     return JSON.parse(employeesList);
   } catch (error) {
     console.log(error);
-    return baseList;
+    return mockEmployeesList;
   }
 };
 
