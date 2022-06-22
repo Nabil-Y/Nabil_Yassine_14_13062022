@@ -24,3 +24,23 @@ export interface Employee {
 export interface EmployeesList {
   employees: Employee[];
 }
+
+/**
+ * Interface for InputDate Component props
+ */
+export interface InputDate {
+  ref: React.MutableRefObject<HTMLInputElement | null>;
+  name: "string";
+  id: "string";
+}
+
+/**
+ * Interface for InputText Component props
+ */
+export interface InputText {
+  ref: React.MutableRefObject<HTMLInputElement | null>;
+  name: "string";
+  id: "string";
+  pattern: "string";
+  errorMessage: "string";
+}
