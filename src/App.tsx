@@ -10,9 +10,6 @@ import Home from "./pages/Home";
 const App = () => {
   return (
     <>
-      <div className="">
-        <h1 className="text-2xl text-primary">Hello World</h1>
-      </div>
       <Routes>
         <Route path="/employees" element={<Employees />} />
         <Route path="/" element={<Home />} />

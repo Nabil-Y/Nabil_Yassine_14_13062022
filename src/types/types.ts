@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 /**
  * Employee interface to store data for one employee
  */
@@ -28,19 +30,26 @@ export interface EmployeesList {
 /**
  * Interface for InputDate Component props
  */
-export interface InputDate {
-  ref: React.MutableRefObject<HTMLInputElement | null>;
-  name: "string";
-  id: "string";
+export interface IDateInput {
+  reference: React.MutableRefObject<HTMLInputElement | null>;
+  name: string;
+  id: string;
+  isError: boolean;
 }
 
 /**
  * Interface for InputText Component props
  */
-export interface InputText {
-  ref: React.MutableRefObject<HTMLInputElement | null>;
-  name: "string";
-  id: "string";
-  pattern: "string";
-  errorMessage: "string";
+export interface ITextInput {
+  reference: React.MutableRefObject<HTMLInputElement | null>;
+  name: string;
+  id: string;
+  pattern: string;
+  errorMessage: string;
+  isError: boolean;
+}
+
+export interface ICard {
+  children: ReactNode;
+  className?: string;
 }
