@@ -6,4 +6,6 @@ body {
   display: grid;
   place-items: center;
   min-height: 100vh;
+  background: teal;
+  padding: 1rem;
 }

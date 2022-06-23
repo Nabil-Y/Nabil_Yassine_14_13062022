@@ -1,7 +1,9 @@
+import { useId } from "react";
 import { IDateInput } from "../../types/types";
 
 const InputDate = (props: IDateInput) => {
-  const { id, name, reference, isError } = props;
+  const { name, reference, isError } = props;
+  const id = useId();
   return (
     <div className="py-1">
       <label htmlFor={id} className="font-bold">
@@ -13,7 +15,7 @@ const InputDate = (props: IDateInput) => {
         name={name}
         ref={reference}
         required
-        className={`peer block border-2 outline-none valid:border-solid valid:border-green-700 ${
+        className={`peer mt-1 block w-full border-2 outline-none valid:border-solid valid:border-green-700 ${
           isError ? "invalid:border-red-700" : ""
         }`}
       />
@@ -24,7 +26,7 @@ const InputDate = (props: IDateInput) => {
             : "select-none text-sm text-transparent"
         }
       >
-        Choose with the date picker
+        Choose a date with the date picker
       </p>
     </div>
   );

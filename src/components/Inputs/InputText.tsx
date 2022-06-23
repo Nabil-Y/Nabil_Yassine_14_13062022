@@ -1,7 +1,9 @@
+import { useId } from "react";
 import { ITextInput } from "../../types/types";
 
 const InputText = (props: ITextInput) => {
-  const { id, name, reference, pattern, errorMessage, isError } = props;
+  const { name, reference, pattern, errorMessage, isError } = props;
+  const id = useId();
   return (
     <div className="py-1">
       <label htmlFor={id} className="font-bold">
@@ -14,7 +16,7 @@ const InputText = (props: ITextInput) => {
         ref={reference}
         pattern={pattern}
         required
-        className={`peer block border-2 outline-none valid:border-solid valid:border-green-700 ${
+        className={`peer mt-1 block w-full border-2 outline-none valid:border-solid valid:border-green-700 ${
           isError ? "invalid:border-red-700" : ""
         }`}
       />
