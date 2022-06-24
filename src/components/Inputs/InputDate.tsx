@@ -19,14 +19,14 @@ const InputDate = (props: IDateInput) => {
         id={id}
         name={name}
         required
-        className={`peer mt-1 block w-full border-2 outline-none valid:border-solid valid:border-green-700 ${
-          isError ? "invalid:border-red-700" : ""
+        className={`peer mt-1 block w-full border-2 outline-none valid:border-solid valid:border-valid ${
+          isError ? "invalid:border-invalid" : ""
         }`}
       />
       <p
         className={
           isError
-            ? "text-sm text-red-700 peer-valid:select-none peer-valid:opacity-0"
+            ? "text-sm text-invalid peer-valid:select-none peer-valid:opacity-0"
             : "select-none text-sm text-transparent"
         }
       >

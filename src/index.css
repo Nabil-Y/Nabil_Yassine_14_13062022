@@ -2,10 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  display: grid;
-  place-items: center;
-  min-height: 100vh;
-  background: teal;
-  padding: 1rem;
+@layer base {
+  body {
+    @apply min-h-screen;
+  }
+
+  main {
+    @apply bg-tertiary p-4;
+  }
 }

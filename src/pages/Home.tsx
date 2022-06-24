@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import AddEmployeeForm from "../components/Forms/AddEmployeeForm";
 import Card from "../components/UI/Card";
 
@@ -9,14 +8,8 @@ import Card from "../components/UI/Card";
 const Home = () => {
   return (
     <main>
-      <Card>
+      <Card className="max-w-[640px] sm:my-8">
         <h1 className="pb-4 text-center text-4xl font-bold">HRnet</h1>
-        <Link
-          to="/employees"
-          className="block pb-4 text-center font-bold text-secondary underline transition-all hover:text-primary"
-        >
-          View Current Employees
-        </Link>
         <AddEmployeeForm />
       </Card>
     </main>

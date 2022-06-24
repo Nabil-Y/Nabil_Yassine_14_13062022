@@ -15,7 +15,11 @@ const InputSelect = (props: ISelectInput) => {
       <label htmlFor={id} className="block font-bold">
         {name}
       </label>
-      <select name={name} id={id} className="mb-6 mt-1 w-full p-2">
+      <select
+        name={name}
+        id={id}
+        className="mb-6 mt-1 w-full cursor-pointer p-2"
+      >
         {options.map((item, index) => (
           <option key={item.name + index} value={item.value}>
             {item.name}
