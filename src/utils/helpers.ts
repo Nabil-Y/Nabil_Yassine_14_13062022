@@ -35,3 +35,16 @@ export const saveEmployeesToStorage = (state: EmployeesList) => {
     console.log(error);
   }
 };
+
+/**
+ * capitalizeString Helper Function
+ * @param string string to be capitalized
+ * @returns capitalized string
+ */
+export const capitalizeString = (string: string): string => {
+  const stringArray = string.split(" ");
+  const capitalizedArray = stringArray.map(
+    (string) => (string = string.charAt(0).toUpperCase() + string.slice(1))
+  );
+  return capitalizedArray.join(" ");
+};

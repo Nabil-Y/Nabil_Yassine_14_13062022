@@ -3,7 +3,7 @@ import { ICard } from "../../types/types";
 /**
  * Card function
  * @param props Card properties
- * @returns Card Wrapper Component
+ * @returns Card Wrapper component
  */
 const Card = (props: ICard) => {
   const { className, children } = props;

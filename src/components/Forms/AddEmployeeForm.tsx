@@ -1,87 +1,88 @@
-import { useId, useRef, useState } from "react";
+import React, { useId, useState } from "react";
 import InputDate from "../Inputs/InputDate";
 import InputSelect from "../Inputs/InputSelect";
 import InputText from "../Inputs/InputText";
-import { STATES, DEPARTMENTS } from "../../data/constants";
 import Button from "../UI/Button";
+import { STATES, DEPARTMENTS } from "../../data/constants";
+import { Employee } from "../../types/types";
+import { capitalizeString } from "../../utils/helpers";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { addEmployee } from "../../store/slices/employeesSlice";
 
+/**
+ * AddEmployeeForm function
+ * @returns Add Employee Form component
+ */
 const AddEmployeeForm = () => {
   const [isError, setIsError] = useState(false);
   const formId = useId();
+  const dispatch = useAppDispatch();
 
-  const firstnameRef = useRef<HTMLInputElement>(null);
-  const lastnameRef = useRef<HTMLInputElement>(null);
-  const dobRef = useRef<HTMLInputElement>(null);
-  const dosRef = useRef<HTMLInputElement>(null);
-  const streetRef = useRef<HTMLInputElement>(null);
-  const cityRef = useRef<HTMLInputElement>(null);
-  const stateRef = useRef<HTMLSelectElement>(null);
-  const zipCode = useRef<HTMLInputElement>(null);
-  const departmentRef = useRef<HTMLSelectElement>(null);
+  console.log(useAppSelector((state) => state.employees));
 
-  const handleClick = (event: React.SyntheticEvent) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const form = document.getElementById(formId) as HTMLFormElement;
-    if (form.checkValidity()) {
-      // do stuff
-      const result = ` Name: ${firstnameRef.current?.value} ${lastnameRef.current?.value} / D.O.B.: ${dobRef.current?.value} / D.O.S.: ${dosRef.current?.value} / State: ${stateRef.current?.value} / ZipCode: ${zipCode.current?.value}`;
-      console.log("yeaaaah ", result);
-    }
     setIsError(true);
+    const form = event.currentTarget;
+    if (form.checkValidity()) {
+      const formResponse = form.elements as unknown as Record<
+        string,
+        HTMLInputElement | HTMLSelectElement
+      >;
+      const result: Employee = {
+        firstName: capitalizeString(formResponse["First Name"].value),
+        lastName: capitalizeString(formResponse["Last Name"].value),
+        birthDate: formResponse["Date of Birth"].value,
+        startDate: formResponse["Date of Start"].value,
+        street: capitalizeString(formResponse["Street"].value),
+        city: capitalizeString(formResponse["City"].value),
+        state: formResponse["State"].value,
+        zipcode: formResponse["Zip code"].value,
+        department: formResponse["Departments"].value,
+      };
+      dispatch(addEmployee(result));
+    }
   };
 
   return (
     <section className="flex flex-col items-center justify-center ">
       <h2 className="pb-4 text-2xl font-bold">Create Employee</h2>
-      <form id={formId}>
+      <form noValidate id={formId} onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-evenly">
           <div className="w-full  sm:m-4 sm:w-auto">
             <InputText
               name="First Name"
-              reference={firstnameRef}
               pattern="[A-Za-zÀ-ÖØ-öø-ÿ _'-]{2,}"
               errorMessage="Enter 2 or more characters"
               isError={isError}
             />
             <InputText
               name="Last Name"
-              reference={lastnameRef}
               pattern="[A-Za-zÀ-ÖØ-öø-ÿ _'-]{2,}"
               errorMessage="Enter 2 or more characters"
               isError={isError}
             />
-            <InputDate
-              name="Date of Birth"
-              reference={dobRef}
-              isError={isError}
-            />
-            <InputDate name="Start Date" reference={dosRef} isError={isError} />
-            <InputSelect
-              name="Departments"
-              options={DEPARTMENTS}
-              reference={departmentRef}
-            />
+            <InputDate name="Date of Birth" isError={isError} />
+            <InputDate name="Date of Start" isError={isError} />
+            <InputSelect name="Departments" options={DEPARTMENTS} />
           </div>
           <fieldset className="w-full border p-2 sm:m-4 sm:w-auto">
             <legend className="mb-4 px-2 font-bold">Adress</legend>
             <InputText
               name="Street"
-              reference={streetRef}
               pattern="[A-Za-zÀ-ÖØ-öø-ÿ _'-]{2,}"
               errorMessage="Enter 2 or more characters"
               isError={isError}
             />
             <InputText
               name="City"
-              reference={cityRef}
               pattern="[A-Za-zÀ-ÖØ-öø-ÿ _'-]{2,}"
               errorMessage="Enter 2 or more characters"
               isError={isError}
             />
-            <InputSelect name="State" options={STATES} reference={stateRef} />
+            <InputSelect name="State" options={STATES} />
             <InputText
               name="Zip code"
-              reference={zipCode}
               pattern="\d{5}"
               errorMessage="Enter a number of 5 characters"
               isError={isError}
@@ -89,12 +90,7 @@ const AddEmployeeForm = () => {
           </fieldset>
         </div>
       </form>
-      <Button
-        type="submit"
-        form={formId}
-        onClick={handleClick}
-        className="mt-4 sm:mt-0"
-      >
+      <Button type="submit" form={formId} className="mt-4 sm:mt-0">
         Save
       </Button>
     </section>

@@ -1,8 +1,13 @@
 import { useId } from "react";
 import { IDateInput } from "../../types/types";
 
+/**
+ * InputDate function
+ * @param props Input Date properties
+ * @returns Input Date component
+ */
 const InputDate = (props: IDateInput) => {
-  const { name, reference, isError } = props;
+  const { name, isError } = props;
   const id = useId();
   return (
     <div className="py-1">
@@ -13,7 +18,6 @@ const InputDate = (props: IDateInput) => {
         type="date"
         id={id}
         name={name}
-        ref={reference}
         required
         className={`peer mt-1 block w-full border-2 outline-none valid:border-solid valid:border-green-700 ${
           isError ? "invalid:border-red-700" : ""

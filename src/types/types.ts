@@ -41,12 +41,7 @@ export interface Employee {
   /**
    * Employee department in the company
    */
-  department:
-    | "Sales"
-    | "Marketing"
-    | "Engineering"
-    | "Human Resources"
-    | "Legal";
+  department: string;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////
@@ -68,10 +63,6 @@ export interface EmployeesList {
  */
 export interface IDateInput {
   /**
-   * Input ref
-   */
-  reference: React.MutableRefObject<HTMLInputElement | null>;
-  /**
    * Input name
    */
   name: string;
@@ -87,10 +78,6 @@ export interface IDateInput {
  * Interface for InputText Component props
  */
 export interface ITextInput {
-  /**
-   * Input ref
-   */
-  reference: React.MutableRefObject<HTMLInputElement | null>;
   /**
    * Input name
    */
@@ -123,10 +110,6 @@ export interface ISelectInput {
    * Input name
    */
   name: string;
-  /**
-   * Input ref
-   */
-  reference: React.MutableRefObject<HTMLSelectElement | null>;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

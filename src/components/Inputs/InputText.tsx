@@ -1,8 +1,13 @@
 import { useId } from "react";
 import { ITextInput } from "../../types/types";
 
+/**
+ * InputText function
+ * @param props Input Text properties
+ * @returns Input Text component
+ */
 const InputText = (props: ITextInput) => {
-  const { name, reference, pattern, errorMessage, isError } = props;
+  const { name, pattern, errorMessage, isError } = props;
   const id = useId();
   return (
     <div className="py-1">
@@ -13,7 +18,6 @@ const InputText = (props: ITextInput) => {
         type="text"
         id={id}
         name={name}
-        ref={reference}
         pattern={pattern}
         required
         className={`peer mt-1 block w-full border-2 outline-none valid:border-solid valid:border-green-700 ${
