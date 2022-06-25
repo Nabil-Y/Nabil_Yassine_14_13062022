@@ -171,3 +171,19 @@ export interface Ibutton {
    */
   form?: string;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ *
+ */
+export interface IModal {
+  /**
+   * Modal content
+   */
+  children: ReactNode;
+  /**
+   * Close Modal function
+   */
+  closeModal: () => void;
+}

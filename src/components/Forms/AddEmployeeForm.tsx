@@ -8,6 +8,7 @@ import { Employee } from "../../types/types";
 import { capitalizeString } from "../../utils/helpers";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addEmployee } from "../../store/slices/employeesSlice";
+import Modal from "../UI/Modal";
 
 /**
  * AddEmployeeForm function
@@ -15,10 +16,13 @@ import { addEmployee } from "../../store/slices/employeesSlice";
  */
 const AddEmployeeForm = () => {
   const [isError, setIsError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const formId = useId();
   const dispatch = useAppDispatch();
 
-  console.log(useAppSelector((state) => state.employees));
+  const employeesList = useAppSelector((state) => state.employees.employees);
+  const lastEmployee = employeesList.slice().reverse()[0];
+  const lastEmployeeName = `${lastEmployee.firstName} ${lastEmployee.lastName}`;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -29,7 +33,7 @@ const AddEmployeeForm = () => {
         string,
         HTMLInputElement | HTMLSelectElement
       >;
-      const result: Employee = {
+      const formResult: Employee = {
         firstName: capitalizeString(formResponse["First Name"].value),
         lastName: capitalizeString(formResponse["Last Name"].value),
         birthDate: formResponse["Date of Birth"].value,
@@ -40,7 +44,17 @@ const AddEmployeeForm = () => {
         zipcode: formResponse["Zip code"].value,
         department: formResponse["Departments"].value,
       };
-      dispatch(addEmployee(result));
+      if (
+        employeesList.findIndex(
+          (employee) =>
+            employee.firstName === formResult.firstName &&
+            employee.lastName === formResult.lastName &&
+            employee.birthDate === formResult.birthDate
+        ) === -1
+      ) {
+        dispatch(addEmployee(formResult));
+        setShowModal(true);
+      }
     }
   };
 
@@ -93,6 +107,11 @@ const AddEmployeeForm = () => {
       <Button type="submit" form={formId} className="mt-4 sm:mt-0">
         Save
       </Button>
+      {showModal && (
+        <Modal closeModal={() => setShowModal(false)}>
+          New employee: {lastEmployeeName}
+        </Modal>
+      )}
     </section>
   );
 };

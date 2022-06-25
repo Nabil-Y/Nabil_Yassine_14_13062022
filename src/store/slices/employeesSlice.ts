@@ -22,17 +22,8 @@ export const employeesSlice = createSlice({
   initialState,
   reducers: {
     addEmployee: (state: EmployeesList, action: PayloadAction<Employee>) => {
-      if (
-        state.employees.findIndex(
-          (employee) =>
-            employee.firstName === action.payload.firstName &&
-            employee.lastName === action.payload.lastName &&
-            employee.birthDate === action.payload.birthDate
-        ) === -1
-      ) {
-        state.employees = [...state.employees, action.payload];
-        saveEmployeesToStorage(state);
-      }
+      state.employees = [...state.employees, action.payload];
+      saveEmployeesToStorage(state);
     },
   },
 });
