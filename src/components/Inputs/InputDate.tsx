@@ -23,15 +23,15 @@ const InputDate = (props: IDateInput) => {
           isError ? "invalid:border-invalid" : ""
         }`}
       />
-      <p
-        className={
-          isError
-            ? "text-sm text-invalid peer-valid:select-none peer-valid:opacity-0"
-            : "select-none text-sm text-transparent"
-        }
-      >
-        Choose a date with the date picker
-      </p>
+      {isError ? (
+        <p className="text-sm text-invalid peer-valid:select-none peer-valid:opacity-0">
+          Choose a date with the date picker
+        </p>
+      ) : (
+        <p className="select-none text-sm text-transparent">
+          Date Error Placeholder
+        </p>
+      )}
     </div>
   );
 };

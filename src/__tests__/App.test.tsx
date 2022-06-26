@@ -1,25 +1,31 @@
-import { afterEach, describe, expect, it } from "vitest";
-import { cleanup, fireEvent, render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 import App from "../App";
 
-afterEach(cleanup);
-
-describe("App should render in home page", () => {
-  render(
-    <MemoryRouter initialEntries={["/"]}>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </MemoryRouter>
-  );
-
-  const homeSubTitle = screen.getByText(/Create Employee/i);
-  expect(homeSubTitle).toBeTruthy();
+describe("App should", () => {
+  it("Display home page title on home page", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </MemoryRouter>
+    );
+    const homeSubTitle = screen.getByText(/Create Employee/i);
+    expect(homeSubTitle).toBeTruthy();
+  });
 
   it("Navigate to employees page after click on employees link", () => {
+    render(
+      <MemoryRouter initialEntries={["/"]}>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </MemoryRouter>
+    );
     const linkEmployees = screen.getByText(/employees/i);
     expect(linkEmployees).toBeTruthy();
 
@@ -30,7 +36,7 @@ describe("App should render in home page", () => {
   });
 });
 
-describe("App should render", () => {
+describe("App should", () => {
   it("Display Error page if path is incorrect", async () => {
     render(
       <MemoryRouter initialEntries={["/random"]}>

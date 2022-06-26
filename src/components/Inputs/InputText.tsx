@@ -25,15 +25,15 @@ const InputText = (props: ITextInput) => {
         }`}
       />
 
-      <p
-        className={
-          isError
-            ? "text-sm text-invalid peer-valid:select-none peer-valid:opacity-0 "
-            : "select-none text-sm text-transparent"
-        }
-      >
-        {errorMessage}
-      </p>
+      {isError ? (
+        <p className="text-sm text-invalid peer-valid:select-none peer-valid:opacity-0">
+          {errorMessage}
+        </p>
+      ) : (
+        <p className="select-none text-sm text-transparent">
+          Text Error Placeholder
+        </p>
+      )}
     </div>
   );
 };
