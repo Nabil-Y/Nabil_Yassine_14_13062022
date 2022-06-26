@@ -61,7 +61,7 @@ const AddEmployeeForm = () => {
   return (
     <section className="flex flex-col items-center justify-center ">
       <h2 className="pb-4 text-2xl font-bold">Create Employee</h2>
-      <form noValidate id={formId} onSubmit={handleSubmit}>
+      <form role="form" noValidate id={formId} onSubmit={handleSubmit}>
         <div className="flex flex-wrap justify-evenly">
           <div className="w-full  sm:m-4 sm:w-auto">
             <InputText

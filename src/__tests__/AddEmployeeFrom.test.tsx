@@ -24,6 +24,7 @@ describe("Add Employee Form should", () => {
         <AddEmployeeForm />
       </Provider>
     );
+
     const submitButton = screen.getByText(/Save/i);
     fireEvent.click(submitButton);
 
@@ -35,5 +36,18 @@ describe("Add Employee Form should", () => {
     );
     expect(placeholderDateError.length).toBe(2);
     expect(placeholderTextError.length).toBe(4);
+  });
+
+  it("Call handleSubmit on submit", () => {
+    render(
+      <Provider store={store}>
+        <AddEmployeeForm />
+      </Provider>
+    );
+
+    // const handleSubmit = vi.fn(() => Promise.resolve());
+    // const form = screen.getByRole("form");
+    // fireEvent.submit(form);
+    // expect(handleSubmit).toHaveBeenCalled();
   });
 });
