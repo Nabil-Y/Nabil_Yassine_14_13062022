@@ -34,6 +34,7 @@ const AddEmployeeForm = () => {
         HTMLInputElement | HTMLSelectElement
       >;
       const formResult: Employee = {
+        id: (parseInt(lastEmployee.id) + 1).toString(),
         firstName: capitalizeString(formResponse["First Name"].value),
         lastName: capitalizeString(formResponse["Last Name"].value),
         birthDate: formResponse["Date of Birth"].value,
@@ -104,7 +105,7 @@ const AddEmployeeForm = () => {
           </fieldset>
         </div>
       </form>
-      <Button type="submit" form={formId} className="mt-4 sm:mt-0">
+      <Button type="submit" form={formId} className="mt-4 px-6 py-3 sm:mt-0">
         Save
       </Button>
       {showModal && (

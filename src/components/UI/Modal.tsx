@@ -25,15 +25,15 @@ const Modal = (props: IModal) => {
   }, []);
 
   return ReactDOM.createPortal(
-    <div className="absolute top-0 left-0 grid h-screen w-screen place-items-center">
+    <div className="fixed top-0 left-0 grid h-full w-full place-items-center">
       <div
-        className="absolute top-0 left-0 h-screen w-screen cursor-pointer bg-black bg-opacity-30"
+        className="fixed top-0 left-0 h-full w-full cursor-pointer bg-black bg-opacity-30"
         onClick={closeModal}
       ></div>
       <Card className="opacity-1 relative m-auto overflow-visible">
         <Button
           type="button"
-          className="absolute right-[-10%] top-[-20%] px-4 py-2 text-sm"
+          className="absolute right-[-15px] top-[-15px] px-3 py-2 text-xs"
           onClick={closeModal}
         >
           X

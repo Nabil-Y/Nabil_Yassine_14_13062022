@@ -7,6 +7,10 @@ import { ReactNode } from "react";
  */
 export interface Employee {
   /**
+   * Employee ID
+   */
+  id: string;
+  /**
    * Employee First Name
    */
   firstName: string;

@@ -25,7 +25,7 @@ describe("localStorage should", () => {
     const spyGetFromStorage = vi.spyOn(Storage.prototype, "getItem");
     const employeesList = getEmployeesFromStorage();
 
-    expect(employeesList.employees.length).toBe(20);
+    expect(employeesList.employees.length).toBe(5);
     expect(spyGetFromStorage).toHaveBeenCalled();
   });
 
