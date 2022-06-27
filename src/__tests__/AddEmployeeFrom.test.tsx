@@ -2,12 +2,18 @@ import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import AddEmployeeForm from "../components/Forms/AddEmployeeForm";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import { createTestStore } from "../store/store";
+import { getEmployeesFromStorage } from "../utils/helpers";
+
+/**
+ * Init Redux test store
+ */
+const testStore = createTestStore();
 
 describe("Add Employee Form should", () => {
   it("Display placeholder error message", () => {
     render(
-      <Provider store={store}>
+      <Provider store={testStore}>
         <AddEmployeeForm />
       </Provider>
     );
@@ -18,9 +24,9 @@ describe("Add Employee Form should", () => {
     expect(placeholderTextError.length).toBe(5);
   });
 
-  it("Should display real error message after submitting empty form", () => {
+  it("Should display real error message after submitting invalid form", () => {
     render(
-      <Provider store={store}>
+      <Provider store={testStore}>
         <AddEmployeeForm />
       </Provider>
     );
@@ -38,16 +44,55 @@ describe("Add Employee Form should", () => {
     expect(placeholderTextError.length).toBe(4);
   });
 
-  it("Call handleSubmit on submit", () => {
+  it("Update store and show modal when submitting valid form", () => {
     render(
-      <Provider store={store}>
+      <Provider store={testStore}>
         <AddEmployeeForm />
       </Provider>
     );
 
-    // const handleSubmit = vi.fn(() => Promise.resolve());
-    // const form = screen.getByRole("form");
-    // fireEvent.submit(form);
-    // expect(handleSubmit).toHaveBeenCalled();
+    const initialList = getEmployeesFromStorage();
+
+    const firstName = screen.getByLabelText(/First Name/i) as HTMLInputElement;
+    firstName.value = "Roland";
+
+    const lastName = screen.getByLabelText(/Last Name/i) as HTMLInputElement;
+    lastName.value = "Garros";
+
+    const birthDate = screen.getByLabelText(
+      /Date of Birth/i
+    ) as HTMLInputElement;
+    birthDate.value = "1992-12-05";
+
+    const startDate = screen.getByLabelText(
+      /Date of Start/i
+    ) as HTMLInputElement;
+    startDate.value = "2020-01-05";
+
+    const street = screen.getByLabelText(/Street/i) as HTMLInputElement;
+    street.value = "5 Rue Anatole Franc";
+
+    const city = screen.getByLabelText(/City/i) as HTMLInputElement;
+    city.value = "Paris";
+
+    const zipCode = screen.getByLabelText(/Zip code/i) as HTMLInputElement;
+    zipCode.value = "75010";
+
+    const state = screen.getByLabelText(/State/i) as HTMLSelectElement;
+    state.value = "AZ";
+
+    const department = screen.getByLabelText(
+      /Department/i
+    ) as HTMLSelectElement;
+    department.value = "Sales";
+
+    const submitButton = screen.getByText(/Save/i);
+    fireEvent.click(submitButton);
+
+    const modal = screen.getByText(/Roland Garros/i);
+    expect(modal).toBeTruthy();
+
+    const updatedList = getEmployeesFromStorage();
+    expect(updatedList.employees.length).not.toBe(initialList.employees.length);
   });
 });

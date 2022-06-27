@@ -42,7 +42,7 @@ const AddEmployeeForm = () => {
         city: capitalizeString(formResponse["City"].value),
         state: formResponse["State"].value,
         zipcode: formResponse["Zip code"].value,
-        department: formResponse["Departments"].value,
+        department: formResponse["Department"].value,
       };
       if (
         employeesList.findIndex(
@@ -78,13 +78,13 @@ const AddEmployeeForm = () => {
             />
             <InputDate name="Date of Birth" isError={isError} />
             <InputDate name="Date of Start" isError={isError} />
-            <InputSelect name="Departments" options={DEPARTMENTS} />
+            <InputSelect name="Department" options={DEPARTMENTS} />
           </div>
           <fieldset className="w-full border p-2 sm:m-4 sm:w-auto">
             <legend className="mb-4 px-2 font-bold">Adress</legend>
             <InputText
               name="Street"
-              pattern="[A-Za-zÀ-ÖØ-öø-ÿ _'-]{2,}"
+              pattern="[A-Za-zÀ-ÖØ-öø-ÿ0-9 _'-]{2,}"
               errorMessage="Enter 2 or more characters"
               isError={isError}
             />

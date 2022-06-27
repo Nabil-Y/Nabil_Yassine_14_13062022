@@ -2,14 +2,19 @@ import { describe, expect, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "../store/store";
+import { createTestStore } from "../store/store";
 import App from "../App";
+
+/**
+ * Init Redux test store
+ */
+const testStore = createTestStore();
 
 describe("App should", () => {
   it("Display home page title on home page", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
-        <Provider store={store}>
+        <Provider store={testStore}>
           <App />
         </Provider>
       </MemoryRouter>
@@ -21,7 +26,7 @@ describe("App should", () => {
   it("Navigate to employees page after click on employees link", () => {
     render(
       <MemoryRouter initialEntries={["/"]}>
-        <Provider store={store}>
+        <Provider store={testStore}>
           <App />
         </Provider>
       </MemoryRouter>
@@ -40,7 +45,7 @@ describe("App should", () => {
   it("Display Error page if path is incorrect", async () => {
     render(
       <MemoryRouter initialEntries={["/random"]}>
-        <Provider store={store}>
+        <Provider store={testStore}>
           <App />
         </Provider>
       </MemoryRouter>
