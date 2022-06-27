@@ -11,19 +11,23 @@ import Card from "./Card";
  */
 const Modal = (props: IModal) => {
   const { children, closeModal } = props;
+  const newDiv = document.createElement("div");
+  newDiv.setAttribute("id", "modal");
+  document.body.append(newDiv);
 
   useEffect(() => {
     window.addEventListener("keydown", closeModal);
 
     return () => {
       window.removeEventListener("keydown", closeModal);
+      document.body.removeChild(document.getElementById("modal") as Element);
     };
   }, []);
 
   return ReactDOM.createPortal(
-    <div className="fixed grid h-screen w-screen place-items-center">
+    <div className="absolute top-0 left-0 grid h-screen w-screen place-items-center">
       <div
-        className=" fixed  h-screen w-screen cursor-pointer bg-black bg-opacity-30"
+        className="absolute top-0 left-0 h-screen w-screen cursor-pointer bg-black bg-opacity-30"
         onClick={closeModal}
       ></div>
       <Card className="opacity-1 relative m-auto overflow-visible">
@@ -37,7 +41,8 @@ const Modal = (props: IModal) => {
         {children}
       </Card>
     </div>,
-    document.getElementById("modal") as Element
+    newDiv
+    // document.getElementById("modal") as Element
   );
 };
 
