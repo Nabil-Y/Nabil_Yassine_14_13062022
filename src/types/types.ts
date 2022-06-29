@@ -179,7 +179,7 @@ export interface Ibutton {
 /////////////////////////////////////////////////////////////////////////////////////
 
 /**
- *
+ * Modal Component props
  */
 export interface IModal {
   /**
@@ -191,3 +191,10 @@ export interface IModal {
    */
   closeModal: () => void;
 }
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+/**
+ * Type of add employee form submit event response
+ */
+export type FormResponse = Record<string, HTMLInputElement | HTMLSelectElement>;

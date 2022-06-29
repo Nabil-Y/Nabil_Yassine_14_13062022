@@ -4,7 +4,7 @@ import InputSelect from "../Inputs/InputSelect";
 import InputText from "../Inputs/InputText";
 import Button from "../UI/Button";
 import { STATES, DEPARTMENTS } from "../../data/constants";
-import { Employee } from "../../types/types";
+import { Employee, FormResponse } from "../../types/types";
 import { capitalizeString } from "../../utils/helpers";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addEmployee } from "../../store/slices/employeesSlice";
@@ -29,12 +29,9 @@ const AddEmployeeForm = () => {
     setIsError(true);
     const form = event.currentTarget;
     if (form.checkValidity()) {
-      const formResponse = form.elements as unknown as Record<
-        string,
-        HTMLInputElement | HTMLSelectElement
-      >;
+      const formResponse = form.elements as unknown as FormResponse;
       const formResult: Employee = {
-        id: (parseInt(lastEmployee.id) + 1).toString(),
+        id: `${+lastEmployee.id + 1}`,
         firstName: capitalizeString(formResponse["First Name"].value),
         lastName: capitalizeString(formResponse["Last Name"].value),
         birthDate: formResponse["Date of Birth"].value,
