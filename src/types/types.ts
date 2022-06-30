@@ -13,39 +13,39 @@ export interface Employee {
   /**
    * Employee First Name
    */
-  firstName: string;
+  "First Name": string;
   /**
    * Employee Last Name
    */
-  lastName: string;
+  "Last Name": string;
   /**
    * Employee date of birth
    */
-  birthDate: string;
+  "Date of Birth": string;
   /**
    * Employee start date in the company
    */
-  startDate: string;
+  "Date of Start": string;
   /**
    * Employee street
    */
-  street: string;
+  Street: string;
   /**
    * Employee city
    */
-  city: string;
+  City: string;
   /**
    * Employee state
    */
-  state: string;
+  State: string;
   /**
    * Employee Zip code
    */
-  zipcode: string | number;
+  "Zip code": string | number;
   /**
    * Employee department in the company
    */
-  department: string;
+  Department: string;
 }
 
 /////////////////////////////////////////////////////////////////////////////////////

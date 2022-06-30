@@ -3,12 +3,12 @@ import InputDate from "../Inputs/InputDate";
 import InputSelect from "../Inputs/InputSelect";
 import InputText from "../Inputs/InputText";
 import Button from "../UI/Button";
+import Modal from "../UI/Modal";
 import { STATES, DEPARTMENTS } from "../../data/constants";
 import { Employee, FormResponse } from "../../types/types";
 import { capitalizeString } from "../../utils/helpers";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { addEmployee } from "../../store/slices/employeesSlice";
-import Modal from "../UI/Modal";
 
 /**
  * AddEmployeeForm function
@@ -22,32 +22,34 @@ const AddEmployeeForm = () => {
 
   const employeesList = useAppSelector((state) => state.employees.employees);
   const lastEmployee = employeesList.slice().reverse()[0];
-  const lastEmployeeName = `${lastEmployee.firstName} ${lastEmployee.lastName}`;
+  const lastEmployeeName = `${lastEmployee["First Name"]} ${lastEmployee["Last Name"]}`;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setIsError(true);
+
     const form = event.currentTarget;
     if (form.checkValidity()) {
       const formResponse = form.elements as unknown as FormResponse;
       const formResult: Employee = {
         id: `${+lastEmployee.id + 1}`,
-        firstName: capitalizeString(formResponse["First Name"].value),
-        lastName: capitalizeString(formResponse["Last Name"].value),
-        birthDate: formResponse["Date of Birth"].value,
-        startDate: formResponse["Date of Start"].value,
-        street: capitalizeString(formResponse["Street"].value),
-        city: capitalizeString(formResponse["City"].value),
-        state: formResponse["State"].value,
-        zipcode: formResponse["Zip code"].value,
-        department: formResponse["Department"].value,
+        "First Name": capitalizeString(formResponse["First Name"].value),
+        "Last Name": capitalizeString(formResponse["Last Name"].value),
+        "Date of Birth": formResponse["Date of Birth"].value,
+        "Date of Start": formResponse["Date of Start"].value,
+        Street: capitalizeString(formResponse["Street"].value),
+        City: capitalizeString(formResponse["City"].value),
+        State: formResponse["State"].value,
+        "Zip code": formResponse["Zip code"].value,
+        Department: formResponse["Department"].value,
       };
+
       if (
         employeesList.findIndex(
           (employee) =>
-            employee.firstName === formResult.firstName &&
-            employee.lastName === formResult.lastName &&
-            employee.birthDate === formResult.birthDate
+            employee["First Name"] === formResult["First Name"] &&
+            employee["Last Name"] === formResult["Last Name"] &&
+            employee["Date of Birth"] === formResult["Date of Birth"]
         ) === -1
       ) {
         dispatch(addEmployee(formResult));
