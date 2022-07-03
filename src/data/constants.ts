@@ -315,7 +315,7 @@ export const EMPLOYEES: Employee[] = [
     "Last Name": "McSauce",
     "Date of Birth": "1999-04-30",
     "Date of Start": "2022-07-12",
-    Street: "04 Rue du Capitole",
+    Street: "4 Rue du Capitole",
     City: "Paris",
     State: "WY",
     "Zip code": "75001",
