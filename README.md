@@ -4,7 +4,7 @@
 
 ### HRnet demos
 
-- [New webstite live demo](https://Nabil_Yassine_14_13062022.vercel.app/)
+- [New webstite live demo](https://Nabil-Yassine-14-13062022.vercel.app/)
 - [Old wabsite live demo](https://old-hrnet.vercel.app/)
 - [Old website repo](https://github.com/Nabil-Y/old-hrnet)
 
