@@ -9,7 +9,7 @@ export interface Employee {
   /**
    * Employee ID
    */
-  id: string;
+  [id: string]: string;
   /**
    * Employee First Name
    */
@@ -41,7 +41,7 @@ export interface Employee {
   /**
    * Employee Zip code
    */
-  "Zip code": string | number;
+  "Zip code": string;
   /**
    * Employee department in the company
    */
