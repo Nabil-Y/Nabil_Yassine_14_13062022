@@ -5,7 +5,7 @@
 ### HRnet demos
 
 - [New webstite live demo](https://Nabil-Yassine-14-13062022.vercel.app/)
-- [Old wabsite live demo](https://old-hrnet.vercel.app/)
+- [Old website live demo](https://old-hrnet.vercel.app/)
 - [Old website repo](https://github.com/Nabil-Y/old-hrnet)
 
 ### NPM Package: react-table-ny
